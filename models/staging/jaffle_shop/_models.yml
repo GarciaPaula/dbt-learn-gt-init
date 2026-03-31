@@ -1,0 +1,32 @@
+models:
+  - name: stg_jaffle_shop__orders
+    description: Tables with customers that placed orders
+    columns:
+      - name: order_id
+        description: unique identifier for orders
+        data_tests:
+          - unique
+          - not_null
+      - name: status
+        data_tests:
+          - accepted_values:
+             values:
+               - 'returned'
+               - 'completed'
+               - 'return_pending'
+               - 'shipped'
+               - 'placed'
+      - name: customer_id
+        data_tests:
+          - relationships:
+              field: customer_id
+              to: ref('stg_jaffle_shop__customers')
+
+  - name: stg_jaffle_shop__customers
+    columns:
+      - name: customer_id
+        description: Unique identifier for customer
+        data_tests:
+          - unique
+          - not_null
+

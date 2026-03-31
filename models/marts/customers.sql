@@ -7,7 +7,7 @@
 with customers as (
 
     select
-        id as customer_id,
+        customer_id,
         first_name,
         last_name
 
@@ -22,7 +22,7 @@ orders as (
         order_date,
         status
 
-    from raw.jaffle_shop.orders
+    from {{ ref('stg_jaffle_shop__orders') }}
 
 ),
 
