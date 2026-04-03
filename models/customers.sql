@@ -1,3 +1,9 @@
+{{config(
+
+    materalized='table',
+    tags='hourly')}}
+
+
 with customers as (
 
     select
